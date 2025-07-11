@@ -15,8 +15,11 @@ class StringCalculator{
         }
         //debug for String
         print("Numbaer add -->",numbers)
-        
-        return Int(numbers) ?? 0
+        //this will remove ,
+        let components = numbers.split(separator: ",").map(String.init)
+        //this sum two digits
+        let sum = components.compactMap { Int($0) }.reduce(0, +)
+                return sum
     }
 }
 
