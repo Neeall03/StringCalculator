@@ -13,8 +13,8 @@ final class StringCalculatorTests: XCTestCase {
     //To check empty string
     func testEmptyString(){
         let calculator = StringCalculator()
-        XCTAssertEqual(calculator.add("//;\n1;2"), 3)
-        XCTAssertEqual(calculator.add("//$\n1$2$3"), 6)
+        XCTAssertEqual(calculator.add("-1,2,-3"),2)
+        
     }
 
 }
