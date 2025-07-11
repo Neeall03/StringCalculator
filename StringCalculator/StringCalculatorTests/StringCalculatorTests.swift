@@ -14,6 +14,8 @@ final class StringCalculatorTests: XCTestCase {
     func testEmptyString(){
         let calculator = StringCalculator()
         XCTAssertEqual(calculator.add(""), 0)
+        XCTAssertEqual(calculator.add("7"), 7)
+        XCTAssertEqual(calculator.add("9"), 9)
     }
 
 }

@@ -9,8 +9,14 @@ import UIKit
 
 class StringCalculator{
     func add(_ numbers:String)->Int{
-       
-        return 0
+       //check empty string
+       guard !numbers.isEmpty else {
+            return 0
+        }
+        //debug for String
+        print("Numbaer add -->",numbers)
+        
+        return Int(numbers) ?? 0
     }
 }
 
