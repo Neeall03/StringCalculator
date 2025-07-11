@@ -8,21 +8,21 @@
 import UIKit
 
 class StringCalculator{
-    func add(_ numbers:String)->Int{
+    //to check error added 
+    func add(_ numbers:String) throws -> Int {
        //check empty string
        guard !numbers.isEmpty else {
             return 0
         }
         //taken as object for delimiter
-        var delimiter: Character = ","
-        //this will replace
+        var delimiters: CharacterSet = [",", "\n"]
         var numbersToParse = numbers
-        // ; single char delimiter
+
         if numbers.hasPrefix("//") {
             if let firstNewlineIndex = numbers.firstIndex(of: "\n") {
                 let delimiterString = String(numbers[numbers.index(numbers.startIndex, offsetBy: 2)..<firstNewlineIndex])
-                if let customDel = delimiterString.first {
-                    delimiter = customDel
+                if let customDelimiterCharaecter = delimiterString.first {
+                    delimiters.insert(customDelimiterCharaecter)
                 }
                 numbersToParse = String(numbers[numbers.index(after: firstNewlineIndex)...])
             }
@@ -30,13 +30,15 @@ class StringCalculator{
         
         //debug for String
         print("Numbaer add -->",numbers)
-        //this will replace \n (new line) with , (comma)
-        let cleanedNumbers = numbersToParse.replacingOccurrences(of: "\n", with: String(delimiter))
-        //this will remove ,
-        let components = cleanedNumbers.split(separator: delimiter).map(String.init)
+        //here we need to pass Array in sepratedBy, for that we need to add delimeter in an array.
+        let components = numbersToParse.components(separatedBy: delimiters)
+       
         //this sum of given numbers
         let sum = components.compactMap { Int($0) }.reduce(0, +)
                 return sum
     }
 }
-
+//Equatable for easier comparison
+enum CalculatorError: Error, Equatable {
+    case negativeNumbersNotAllowed(String)
+}

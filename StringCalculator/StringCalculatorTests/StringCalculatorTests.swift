@@ -16,5 +16,19 @@ final class StringCalculatorTests: XCTestCase {
         XCTAssertEqual(calculator.add("-1,2,-3"),2)
         
     }
+    //Equatable for easier comparison
+    enum CalculatorError: Error, Equatable {
+        case negativeNumbersNotAllowed(String)
+    }
+
+    func negativeNumbers() {
+        let calculator = StringCalculator()
+        XCTAssertThrowsError(try calculator.add("-1")) { error in
+            XCTAssertEqual(error as? CalculatorError, .negativeNumbersNotAllowed("-1"))
+        }
+        XCTAssertThrowsError(try calculator.add("1,-2,3,-4")) { error in
+            XCTAssertEqual(error as? CalculatorError, .negativeNumbersNotAllowed("-2, -4"))
+        }
+    }
 
 }
