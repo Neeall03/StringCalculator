@@ -30,6 +30,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6B9EF4AB2E219E94003669FC /* Exceptions for "StringCalculator" folder in "StringCalculatorTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				App/StringCalculator.swift,
+				App/StringCalculatorViewController.swift,
+			);
+			target = 6BF0CE832E2140B2004EA3E2 /* StringCalculatorTests */;
+		};
 		6BF0CE962E2140B2004EA3E2 /* Exceptions for "StringCalculator" folder in "StringCalculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +52,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				6BF0CE962E2140B2004EA3E2 /* Exceptions for "StringCalculator" folder in "StringCalculator" target */,
+				6B9EF4AB2E219E94003669FC /* Exceptions for "StringCalculator" folder in "StringCalculatorTests" target */,
 			);
 			path = StringCalculator;
 			sourceTree = "<group>";
